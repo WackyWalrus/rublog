@@ -2,29 +2,27 @@ class AdminPanelController < ApplicationController
 	include UsersHelper
 
 	def index
-		current_user
-
-		if @current_user === false
-			redirect_to '/users/login'
+		if check_for_user
+			@posts = Post.all
 		end
-
-		@posts = Post.all
 	end
 
 	def new_post
-		current_user
-
-		if @current_user
+		if check_for_user
 			@post = Post.new
-		else
-			redirect_to '/'
+		end
+	end
+
+	def edit_post
+		if check_for_user
+			@post = Post.find(params[:id])
 		end
 	end
 
 	def save_post
-		current_user
+		if check_for_user
+			current_user
 
-		if @current_user
 			@post = Post.new
 
 			@post.title = params[:post][:title]
@@ -34,9 +32,18 @@ class AdminPanelController < ApplicationController
 			@post.save
 
 			redirect_to @post
-		else
-			redirect_to '/'
 		end
-
 	end
+
+	private
+		def check_for_user
+			current_user
+
+			if @current_user === false
+				redirect_to '/users/login'
+				return false
+			else
+				return true
+			end
+		end
 end
