@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get '/admin/posts/new', to: 'admin_panel#new_post', as: 'new_post_admin_panel'
   get '/admin/posts/edit', to: 'admin_panel#edit_post', as: 'edit_post_admin_panel'
   post '/admin/posts', to: 'admin_panel#save_post', as: 'save_post_admin_panel'
+  post '/admin/posts/update', to: 'admin_panel#update_post', as: 'update_post_admin_panel'
 end
