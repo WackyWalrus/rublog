@@ -1,0 +1,12 @@
+<%= form_for @user, url: { controller: 'users', action: 'do_login' } do |form| %>
+	<h2>Login</h2>
+	<div class="form-group">
+		<%= form.label :email %>
+		<%= form.email_field :email, class: 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= form.label :password %>
+		<%= form.password_field :password, class: 'form-control' %>
+	</div>
+	<%= form.submit "Login", class: 'btn btn-primary' %>
+<% end %>
