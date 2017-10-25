@@ -1,6 +1,7 @@
 class AdminPanelController < ApplicationController
 	include UsersHelper
 
+	# GET
 	def index
 		if check_for_user
 			@posts = Post.all
@@ -19,6 +20,25 @@ class AdminPanelController < ApplicationController
 		end
 	end
 
+	def account
+		if check_for_user
+			current_user
+		end
+	end
+
+	def users
+		if check_for_user
+
+		end
+	end
+
+	def settings
+		if check_for_user
+
+		end
+	end
+
+	# POST
 	def save_post
 		if check_for_user
 			current_user
@@ -31,7 +51,23 @@ class AdminPanelController < ApplicationController
 
 			@post.save
 
-			redirect_to @post
+			redirect_to edit_post_admin_panel_url id: @post.id, message: 'Post saved!'
+		end
+	end
+
+	# PATCH
+	def update_post
+		if check_for_user
+			current_user
+
+			@post = Post.find(params[:id])
+
+			@post.title = params[:post][:title]
+			@post.content = params[:post][:content]
+
+			@post.save
+
+			redirect_to edit_post_admin_panel_url id: @post.id, message: 'Post saved!'
 		end
 	end
 

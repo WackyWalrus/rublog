@@ -1,5 +1,11 @@
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+@mixin respond($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+
 .navbar {
   border-radius: 0;
 }
@@ -43,12 +49,14 @@
   right: 0;
   top: 5rem;
 
-  & > .row {
-    height: 100%;
-
-    & > div {
+  @include respond(768px) {
+    & > .row {
       height: 100%;
-      overflow: scroll;
+
+      & > div {
+        height: 100%;
+        overflow: scroll;
+      }
     }
   }
 }
@@ -63,9 +71,13 @@
   > div {
     float: left;
     width: 49%;
+  }
 
-    & + div {
-      float: right;
-    }
+  .editor {
+    margin-top: 4rem;
+  }
+
+  .results {
+    float: right;
   }
 }

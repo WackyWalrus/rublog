@@ -1,13 +1,17 @@
-<div class="col-md-2 sidebar">
+<% if !defined?(active)
+	active = ''
+end %>
+
+<div class="col-sm-2 sidebar">
 	<ul>
-		<li class="active">
+		<li<%= ' class=active' if active === 'posts' %>>
 			<%= link_to "Posts", posts_admin_panel_url %>
 			<%= link_to new_post_admin_panel_url, class: 'btn btn-info btn-xs pull-right' do %>
 				<span class="glyphicon glyphicon-pencil"></span>
 			<% end %>
 		</li>
-		<li><a href="#">Account</a></li>
-		<li><a href="#">Users</a></li>
-		<li><a href="#">Settings</a></li>
+		<li<%= ' class=active' if active === 'account' %>><%= link_to "Account", account_admin_panel_url %></li>
+		<li<%= ' class=active' if active === 'users' %>><%= link_to "Users", users_admin_panel_url %></li>
+		<li<%= ' class=active' if active === 'settings' %>><%= link_to "Settings", settings_admin_panel_url %></li>
 	</ul>
 </div>

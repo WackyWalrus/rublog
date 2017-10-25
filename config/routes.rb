@@ -11,9 +11,15 @@ Rails.application.routes.draw do
 
   get '/admin', to: 'admin_panel#index', as: 'index_admin_panel'
 
+  get '/admin/account', to: 'admin_panel#account', as: 'account_admin_panel'
+  patch '/admin/account', to: 'admin_panel#update_account', as: 'update_account_admin_panel'
+
+  get '/admin/users', to: 'admin_panel#users', as: 'users_admin_panel'
+  get '/admin/settings', to: 'admin_panel#settings', as: 'settings_admin_panel'
+
   get '/admin/posts', to: 'admin_panel#index', as: 'posts_admin_panel'
   get '/admin/posts/new', to: 'admin_panel#new_post', as: 'new_post_admin_panel'
   get '/admin/posts/edit', to: 'admin_panel#edit_post', as: 'edit_post_admin_panel'
   post '/admin/posts', to: 'admin_panel#save_post', as: 'save_post_admin_panel'
-  post '/admin/posts/update', to: 'admin_panel#update_post', as: 'update_post_admin_panel'
+  patch '/admin/posts', to: 'admin_panel#update_post', as: 'update_post_admin_panel'
 end

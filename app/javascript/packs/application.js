@@ -15,36 +15,56 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import Markdown from 'markdown'
+import RemoveMarkdown from 'remove-markdown'
 
 import '../styles/main'
 
 class MarkdownEditor extends React.Component {
 	constructor(props) {
 		super(props)
-		this.handleChange = this.handleChange.bind(this)
-
-		let targetSplit = this.props.target.split('_')
+		this.handleContentChange = this.handleContentChange.bind(this)
+		this.handleTitleChange = this.handleTitleChange.bind(this)
 
 		this.state = {
-			name: targetSplit[0] + "[" + targetSplit[1] + "]",
-			value: this.props.content,
-			html: Markdown.parse(this.props.content)
+			content: this.props.content,
+			title: this.props.title,
+			html: Markdown.parse('# ' + RemoveMarkdown(this.props.title) + '\n\n' + this.props.content)
 		}
 	}
 
-	handleChange(event) {
+	handleTitleChange(event) {
+		const content = this.state.content
+
 		this.setState({
-			value: event.target.value,
-			html: Markdown.parse(event.target.value)
+			title: event.target.value,
+			html: Markdown.parse('# ' + RemoveMarkdown(event.target.value) + '\n\n' + content)
+		})
+	}
+
+	handleContentChange(event) {
+		const title = this.state.title
+
+		this.setState({
+			content: event.target.value,
+			html: Markdown.parse('# ' + RemoveMarkdown(title) + '\n\n' + event.target.value)
 		})
 	}
 
 	render() {
-		return <div className="markdown-editor">
-			<div className="editor">
-				<textarea id={this.props.target} name={this.state.name} className="form-control" defaultValue={this.state.value} onKeyUp={this.handleChange}></textarea>
+		return <div>
+			<div className="form-group">
+				<label htmlFor="post_title">Title</label>
+				<input className="form-control" defaultValue={this.state.title} name="post[title]" id="post_title" type="text" onKeyUp={this.handleTitleChange} />
 			</div>
-			<div className="results" dangerouslySetInnerHTML={{__html: this.state.html}}></div>
+			<div className="form-group">
+				<div className="markdown-editor">
+					<div className="editor">
+						<label htmlFor={this.props.target + "_content"}>Content</label>
+						<textarea id={this.props.target + "_content"} name={this.props.target + "[content]"} className="form-control" defaultValue={this.state.content} onKeyUp={this.handleContentChange}></textarea>
+					</div>
+					<div className="results" dangerouslySetInnerHTML={{__html: this.state.html}}></div>
+				</div>
+			</div>
 		</div>
 	}
 }

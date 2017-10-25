@@ -1,0 +1,12 @@
+<%= render 'header' %>
+
+<div class="container-fluid page">
+	<div class="row">
+		<%= render partial: 'sidebar', locals: { active: 'settings' } %>
+		<div class="col-sm-10">
+			<div class="content">
+				<%= Dir.entries('./themes/') %>
+			</div>
+		</div>
+	</div>
+</div>
