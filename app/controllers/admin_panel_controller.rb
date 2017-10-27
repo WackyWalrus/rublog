@@ -34,7 +34,7 @@ class AdminPanelController < ApplicationController
 
 	def settings
 		if check_for_user
-
+			@data = DataParent.find(1)
 		end
 	end
 

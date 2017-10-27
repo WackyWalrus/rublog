@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   patch '/admin/account', to: 'admin_panel#update_account', as: 'update_account_admin_panel'
 
   get '/admin/users', to: 'admin_panel#users', as: 'users_admin_panel'
+
   get '/admin/settings', to: 'admin_panel#settings', as: 'settings_admin_panel'
+  patch '/admin/settings', to: 'data_parent#save', as: 'data_save_admin_panel'
 
   get '/admin/posts', to: 'admin_panel#index', as: 'posts_admin_panel'
   get '/admin/posts/new', to: 'admin_panel#new_post', as: 'new_post_admin_panel'

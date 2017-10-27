@@ -23,6 +23,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'sass-rails'
 gem 'turbolinks'
 
+gem 'database_cleaner'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
