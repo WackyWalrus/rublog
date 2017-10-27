@@ -5,7 +5,7 @@ module AdminPanelHelper
 
 	def data_to_form_field(*args)
 		if args[0].object.input_type === 'select'
-			args[0].select :v, get_options(args[0])
+			args[0].select :v, get_options(args[0]), {}, class: 'form-control'
 		else
 
 		end
@@ -24,7 +24,7 @@ module AdminPanelHelper
 				end
 			end
 
-			return @themes
+			return options_for_select(@themes, arg.object[:v])
 		end
 	end
 end

@@ -7,8 +7,10 @@
 			<div class="content">
 				<%= form_for @data, url: data_save_admin_panel_url, method: :patch do |form| %>
 					<%= form.fields_for :children do |child, c| %>
-						<%= data_to_form_label child %>
-						<%= data_to_form_field child %>
+						<div class="form-group">
+							<%= data_to_form_label child %>
+							<%= data_to_form_field child %>
+						</div>
 					<% end %>
 				<% end %>
 			</div>
