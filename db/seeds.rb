@@ -10,16 +10,28 @@ require 'database_cleaner'
 
 if DatabaseCleaner.clean_with(:truncation)
 
-	@dp = DataParent.new
-	@dp.name = 'settings'
-	@dp.save
+	DataParent.create(name: 'settings')
 
-	@dc = DataChild.new
-	@dc.data_parent_id = 1
-	@dc.name = 'theme'
-	@dc.v = 'default-theme'
-	@dc.input_type = 'select'
-	@dc.options_from = 'get_options'
-	@dc.save!
+	DataChild.create([
+		{
+			data_parent_id: 1,
+			name: 'blog title',
+			v: 'rublog',
+			input_type: 'text'
+		},
+		{
+			data_parent_id: 1,
+			name: 'blog description',
+			v: 'description goes here',
+			input_type: 'textarea'
+		},
+		{
+			data_parent_id: 1,
+			name: 'theme',
+			v: 'default-theme',
+			input_type: 'select',
+			options_from: 'get_options'
+		}
+	])
 
 end

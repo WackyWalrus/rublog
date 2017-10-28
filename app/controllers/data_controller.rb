@@ -13,8 +13,9 @@ class DataController < ApplicationController
 
 			data_child.save
 
-			redirect_to params[:redirect_to]
 		end
+
+		redirect_to params[:redirect_to]
 	end
 
 end

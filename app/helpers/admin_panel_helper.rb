@@ -6,9 +6,12 @@ module AdminPanelHelper
 	def data_to_form_field(*args)
 		if args[0].object.input_type === 'select'
 			args[0].select :v, get_options(args[0]), {}, class: 'form-control'
-		else
-
+		elsif args[0].object.input_type === 'text'
+			args[0].text_field :v, class: 'form-control'
+		elsif args[0].object.input_type === 'textarea'
+			args[0].text_area :v, class: 'form-control'
 		end
+			
 	end
 
 	def get_options(arg)
