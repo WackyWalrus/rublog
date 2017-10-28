@@ -1,9 +1,12 @@
 class AppController < ApplicationController
 	include UsersHelper
+	include AppHelper
 
 	def startup
 		if User.count > 0
-			render "index"
+			current_theme
+
+			render file: "/themes/#{@theme}/index"
 		else
 			redirect_to users_new_url
 		end
