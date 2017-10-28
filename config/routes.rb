@@ -17,11 +17,12 @@ Rails.application.routes.draw do
   get '/admin/users', to: 'admin_panel#users', as: 'users_admin_panel'
 
   get '/admin/settings', to: 'admin_panel#settings', as: 'settings_admin_panel'
-  patch '/admin/settings', to: 'data_parent#save', as: 'data_save_admin_panel'
 
   get '/admin/posts', to: 'admin_panel#index', as: 'posts_admin_panel'
   get '/admin/posts/new', to: 'admin_panel#new_post', as: 'new_post_admin_panel'
   get '/admin/posts/edit', to: 'admin_panel#edit_post', as: 'edit_post_admin_panel'
   post '/admin/posts', to: 'admin_panel#save_post', as: 'save_post_admin_panel'
   patch '/admin/posts', to: 'admin_panel#update_post', as: 'update_post_admin_panel'
+
+  patch '/data/save', to: 'data#save', as: 'data_save'
 end
