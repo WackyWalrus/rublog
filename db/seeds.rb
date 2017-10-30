@@ -35,7 +35,13 @@ if DatabaseCleaner.clean_with(:truncation)
 		{
 			data_parent_id: 1,
 			name: 'header image',
-			v: 'default-theme',
+			v: '',
+			input_type: 'image'
+		},
+		{
+			data_parent_id: 1,
+			name: 'logo image',
+			v: '',
 			input_type: 'image'
 		}
 	])
