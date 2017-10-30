@@ -1,0 +1,14 @@
+<%
+@img_url = settings_img "header image"
+
+if @img_url %>
+	<div class="heading-wrapper">
+		<div class="heading">
+			<%= image_tag @img_url %>
+			<div class="heading-content">
+				<h2><%= site_name %></h2>
+				<p><%= site_desc %></p>
+			</div>
+		</div>
+	</div>
+<% end %>

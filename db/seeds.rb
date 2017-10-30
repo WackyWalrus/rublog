@@ -31,6 +31,12 @@ if DatabaseCleaner.clean_with(:truncation)
 			v: 'default-theme',
 			input_type: 'select',
 			options_from: 'get_options'
+		},
+		{
+			data_parent_id: 1,
+			name: 'header image',
+			v: 'default-theme',
+			input_type: 'image'
 		}
 	])
 

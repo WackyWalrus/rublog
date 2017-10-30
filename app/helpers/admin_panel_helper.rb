@@ -10,6 +10,10 @@ module AdminPanelHelper
 			args[0].text_field :v, class: 'form-control'
 		elsif args[0].object.input_type === 'textarea'
 			args[0].text_area :v, class: 'form-control'
+		elsif args[0].object.input_type === 'file' || args[0].object.input_type === 'image'
+			(
+				args[0].file_field :image
+			)
 		end
 			
 	end
