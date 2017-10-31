@@ -46,4 +46,17 @@ if DatabaseCleaner.clean_with(:truncation)
 		}
 	])
 
+	Post.create([
+		{
+			title: 'Example Blog Post',
+			content: 'this is an example blog post!',
+			user_id: 0
+		},
+		{
+			title: 'Another Example Blog Post!',
+			content: 'This is another example blog post!',
+			user_id: 0
+		}
+	])
+
 end

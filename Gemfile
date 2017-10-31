@@ -27,6 +27,8 @@ gem 'database_cleaner'
 
 gem "paperclip", "~> 5.0.0"
 
+gem "redcarpet"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

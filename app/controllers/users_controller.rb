@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 			}
 		end
 
-		redirect_to 'admin_panel#index'
+		redirect_to '/admin'
 	end
 
 	def show_login

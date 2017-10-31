@@ -11,4 +11,10 @@ class AppController < ApplicationController
 			redirect_to users_new_url
 		end
 	end
+
+	def post
+		current_theme
+
+		render file: "/themes/#{@theme}/posts/"
+	end
 end

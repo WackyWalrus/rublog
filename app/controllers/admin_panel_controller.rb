@@ -46,7 +46,7 @@ class AdminPanelController < ApplicationController
 			@post = Post.new
 
 			@post.title = params[:post][:title]
-			@post.content = params[:post][:content]
+			@post.content = params[:post_content][:content]
 			@post.user_id = @current_user.id
 
 			@post.save
@@ -68,6 +68,15 @@ class AdminPanelController < ApplicationController
 			@post.save
 
 			redirect_to edit_post_admin_panel_url id: @post.id, message: 'Post saved!'
+		end
+	end
+
+	# DELETE
+	def delete_post
+		if check_for_user
+			Post.find(params[:id]).destroy
+
+			redirect_to posts_admin_panel_url
 		end
 	end
 
