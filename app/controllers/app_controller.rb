@@ -15,6 +15,8 @@ class AppController < ApplicationController
 	def post
 		current_theme
 
+		@post = Post.find(params[:id])
+
 		render file: "/themes/#{@theme}/posts/"
 	end
 end

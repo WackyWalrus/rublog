@@ -1,0 +1,11 @@
+<% md_renderer %>
+
+<div class="default-theme">
+	<%= theme_render_partial '_navigation' %>
+
+	<div class="container">
+		<h1><%= @post.title %></h1>
+		<%= @md.render(@post.content).html_safe %>
+	</div>
+
+</div>

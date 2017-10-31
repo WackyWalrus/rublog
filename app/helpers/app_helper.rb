@@ -22,12 +22,17 @@ module AppHelper
 		posts = Post.all
 	end
 
+	def md_renderer
+		@renderer = Redcarpet::Render::HTML.new
+		@md = Redcarpet::Markdown.new(@renderer, extenstions = {})
+	end
+
 	def render_post (post)
-		renderer = Redcarpet::Render::HTML.new
+		md_renderer
 
 		theme_render_partial '_post', {
 			post: post,
-			md: Redcarpet::Markdown.new(renderer, extensions = {})
+			md: @md
 		}
 	end
 
