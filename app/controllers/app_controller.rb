@@ -17,6 +17,8 @@ class AppController < ApplicationController
 
 		@post = Post.find(params[:id])
 
+		@post.view(request.remote_ip)
+
 		render file: "/themes/#{@theme}/posts/"
 	end
 end

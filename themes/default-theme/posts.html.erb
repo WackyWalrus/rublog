@@ -6,6 +6,7 @@
 	<div class="container">
 		<h1><%= @post.title %></h1>
 		<%= @md.render(@post.content).html_safe %>
+		<p>By: <%= @post.user.name %> | <%= pluralize(@post.views.count, "View") %></p>
 	</div>
 
 </div>

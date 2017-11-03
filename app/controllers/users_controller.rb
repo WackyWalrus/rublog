@@ -22,6 +22,21 @@ class UsersController < ApplicationController
 			}
 		end
 
+		if User.all.count === 1
+			Post.create([
+				{
+					title: 'Example Blog Post',
+					content: 'this is an example blog post!',
+					user_id: 1
+				},
+				{
+					title: 'Another Example Blog Post!',
+					content: 'This is another example blog post!',
+					user_id: 1
+				}
+			])
+		end
+
 		redirect_to '/admin'
 	end
 
