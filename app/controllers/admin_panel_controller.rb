@@ -28,7 +28,7 @@ class AdminPanelController < ApplicationController
 
 	def users
 		if check_for_user
-
+			@users = User.all
 		end
 	end
 

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/admin', to: 'admin_panel#index', as: 'index_admin_panel', format: false
 
   get '/admin/account', to: 'admin_panel#account', as: 'account_admin_panel', format: false
-  patch '/admin/account', to: 'admin_panel#update_account', as: 'update_account_admin_panel', format: false
+  patch '/admin/account', to: 'users#update', as: 'update_account_admin_panel', format: false
 
   get '/admin/users', to: 'admin_panel#users', as: 'users_admin_panel', format: false
 
